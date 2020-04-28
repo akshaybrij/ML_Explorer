@@ -1,6 +1,7 @@
 import os
 import sys
-
+import matplotlib.pyplot as plt
+import numpy as np
 class Gradient_Descent:
     def __init__(self):
         self.m = 0
@@ -30,11 +31,19 @@ class Gradient_Descent:
            # import pdb;pdb.set_trace()
             err.append(self.compute_error(x,y,m,b))
             self.m,self.b = m,b
-        import pdb;pdb.set_trace()
 
+        return err[-1],self.m,self.b
 
 x = [11,22,33,44,55,66,77]
 y = [12,23,34,45,56,67,78]
 
 gd = Gradient_Descent()
-gd.process_grad(x,y,100)
+err,m,b = gd.process_grad(x,y,100)
+print(err,m,b)
+y_f = []
+plt.scatter(x,y)
+for i in x:
+    y_f.append(m*np.float(i)+b)
+plt.plot(x,y_f)
+plt.show()
+
