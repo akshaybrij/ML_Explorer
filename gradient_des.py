@@ -16,7 +16,7 @@ class Gradient_Descent:
     def compute_gradient(self,x,y,m,b):
         m_g = 0
         b_g = 0
-        l_r = 0.001
+        l_r = 0.00001
         for i in range(len(x)):
             m_g += -(2/len(x))*(x[i]*(y[i]-(m*x[i]+b)))
             b_g += -(2/len(x))*(y[i]-(m*x[i]+b))
@@ -32,6 +32,7 @@ class Gradient_Descent:
             err.append(self.compute_error(x,y,m,b))
             self.m,self.b = m,b
 
+        #import pdb;pdb.set_trace();
         return err[-1],self.m,self.b
 
 x = [11,22,33,44,55,66,77]
